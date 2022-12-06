@@ -1,0 +1,32 @@
+:root {
+	--main-color: #9F0013;
+	--main-bg-color: #fff;
+
+	--skeletone-color-1: #e15b64;
+	--skeletone-color-2: #f47e60;
+	--skeletone-color-3: #f8b26a;
+	--skeletone-color-4: #abbd81;
+
+	--main-offset: 50px;
+	--paragraph-offset: 17px;
+
+	--container-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.2);
+	--container-active-shadow: 0px 0px 10px 0px var(--main-color);
+
+
+
+
+
+}
+
+@media (max-width: 990px) {
+	:root {
+		--main-offset: 30px;
+	}
+}
+
+@media (max-width: 620px) {
+	:root {
+		--main-offset: 20px;
+	}
+}
