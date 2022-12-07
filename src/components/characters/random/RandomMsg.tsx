@@ -8,11 +8,19 @@ interface RandomMsgProps {
 const RandomMsg: FC<RandomMsgProps> = ({ className }) => {
 	return (
 		<div className={className}>
-			Начальное состояние
+			<div>
+				Click to search random character
+			</div>
 		</div>
 	);
 };
 
 export default styled(RandomMsg)`
+	display: flex;
+	height: 100%;
 
+	justify-content: center;
+	align-items: center;
+
+	text-align: center;
 `;

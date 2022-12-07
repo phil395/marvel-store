@@ -14,7 +14,7 @@
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
-    "marvel-store-api": "https://github.com/phil395/marvel-store-api.git#b539c114388ca2a4e75491301c8636e0395615f3"
+    "marvel-store-api": "github:phil395/marvel-store-api#36a7687c30bf4552fa0023f82a1a50b4ba62242f"
   },
   "scripts": {
     "start": "react-scripts start",
