@@ -10,7 +10,7 @@ interface SingleComicProps {
 	className?: string;
 }
 
-const SingleComic: FC<SingleComicProps> = ({ className }) => {
+const SingleComicPage: FC<SingleComicProps> = ({ className }) => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const comic = useAppSelector(state => state.comics.selected.data);
@@ -67,7 +67,7 @@ const SingleComic: FC<SingleComicProps> = ({ className }) => {
 	);
 };
 
-export default styled(SingleComic)`
+export default styled(SingleComicPage)`
 	section {
 		margin: var(--main-offset) 0;
 
