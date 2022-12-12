@@ -90,7 +90,7 @@ export default styled(MainContainer)`
 		}
 	}
 
-	@media screen and (max-width: ${LARGE_SCREEN_BREAKPOINT}px) {
+	@media screen and (max-width: ${LARGE_SCREEN_BREAKPOINT - 1}px) {
 		flex-direction: column;
 
 		${CharactersShowcase} {

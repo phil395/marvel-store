@@ -12,54 +12,54 @@ interface SearchProps {
 }
 
 const Search: FC<SearchProps> = ({ className }) => {
-	const [query, setQuery] = useState<string>('')
-	const [errorMsg, setErrorMsg] = useAutoHideMessage()
-	const dispatch = useAppDispatch()
-	const data = useAppSelector(state => state.characters.search.data)
-	const status = useAppSelector(state => state.characters.search.status)
+	const [query, setQuery] = useState<string>('');
+	const [errorMsg, setErrorMsg] = useAutoHideMessage();
+	const dispatch = useAppDispatch();
+	const data = useAppSelector(state => state.characters.search.data);
+	const status = useAppSelector(state => state.characters.search.status);
 
 	useEffect(() => {
 		if (status === 'error') {
-			setErrorMsg(`Character ${query} not found`, 5000)
-			dispatch(resetCharactersErrorIn('search'))
+			setErrorMsg(`Character ${query} not found`, 5000);
+			dispatch(resetCharactersErrorIn('search'));
 		}
-	}, [status])
+	}, [status]);
 
 	const handler = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
+		e.preventDefault();
 		if (!query) return;
 
-		if (query.length < 3) setErrorMsg('The name must be longer than 3 characters', 3000)
+		if (query.length < 3) setErrorMsg('The name must be longer than 3 characters', 3000);
 		else {
-			dispatch(getCharacterByName(query))
-			setErrorMsg(null) // reset error msg
+			dispatch(getCharacterByName(query));
+			setErrorMsg(null); // reset error msg
 		}
-	}
+	};
 
 	return (
 		<section className={className}>
 			<h4>Or find a character by name:</h4>
 			<form
 				onSubmit={handler}>
-				<input 
+				<input
 					autoComplete="off"
 					value={query}
 					name='name'
-					onChange={(e) => setQuery(e.target.value)} 
+					onChange={(e) => setQuery(e.target.value)}
 					type="search"
 					placeholder="Enter name"
 					required
 				/>
-				<Button 
+				<Button
 					isColored
 				>
 					Find
 				</Button>
 			</form>
-			
+
 			{errorMsg ? (
 				<div className="error-msg">{errorMsg}</div>
-			): null}
+			) : null}
 
 			{status === 'fetching' ? (
 				<Spiner />
@@ -68,7 +68,7 @@ const Search: FC<SearchProps> = ({ className }) => {
 			{data && data.length ? (
 				<div className="results">
 					<h5>There is!</h5>
-					
+
 					{data.map(char => (
 						<div key={char.id} className="results__item">
 							<Immage thumbnail={char.thumbnail} alt={char.name} />
@@ -84,7 +84,7 @@ const Search: FC<SearchProps> = ({ className }) => {
 				</div>
 			) : null}
 		</section>
-	)
+	);
 };
 
 export default styled(Search)`
@@ -92,17 +92,21 @@ export default styled(Search)`
 	box-shadow: var(--container-shadow);
 	background-color: var(--main-bg-color);
 
+	@media screen and (max-width: 889px) {
+		padding: 20px;
+	}
+
 	form {
 		display: flex;
 	}
 
 	input {
-		flex: 1 1 auto;
+		flex: 1 1 100px;
+		width: 100%;  // fix input width
 		padding: 5px 10px;
     box-shadow: 0px 2px 3px 3px rgb(0 0 0 / 10%);
 		border: none;
 		font-size: 16px;
-
 	}
 	input::placeholder {
 		font-size: 16px;
@@ -116,6 +120,11 @@ export default styled(Search)`
 	button {
 		margin-left: 25px;
 		flex: 0 0 100px;
+
+		@media screen and (max-width: 480px) {
+			flex: 0 0 40px;
+			margin-left: 20px;
+		}
 	}
 
 	.error-msg {
