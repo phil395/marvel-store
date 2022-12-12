@@ -6,6 +6,7 @@ import TopPanel from "./components/TopPanel";
 import CharactersPage from './pages/characters';
 import Comics from './pages/comics';
 import SingleComic from './pages/SingleComic';
+import NotFoundPage from './pages/404';
 
 
 const App: FC = () => {
@@ -19,9 +20,10 @@ const App: FC = () => {
       <Routes>
         <Route path='/' element={<CharactersPage />} />
         <Route path='/characters' element={<Navigate to='/' />} />
+        <Route path='/characters/:id' element={<NotFoundPage message='Sorry, page not implemented yet' />} />
         <Route path='/comics' element={<Comics />} />
         <Route path='/comics/:id' element={<SingleComic />} />
-        <Route path='*' element={null} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </>
   );
