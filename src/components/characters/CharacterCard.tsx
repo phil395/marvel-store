@@ -35,12 +35,13 @@ const CharacterCard: FC<CharactersCardProps> = ({ className, id, name, descripti
 			{comics.length > 0 ? (
 				<>
 					<h4>Comics:</h4>
-					
+
 					<ul className='comics-list'>
 						{comics.map(comic => {
 							return (
 								<li key={comic.title}>
-									<a href={comic.url ?? 'https://marvel.com'} target='_blank' rel="noreferrer">{comic.title}</a>
+									{/* <a href={comic.url ?? 'https://marvel.com'} target='_blank' rel="noreferrer">{comic.title}</a> */}
+									{comic.title}
 								</li>
 							);
 						})}
@@ -69,17 +70,6 @@ export default styled(CharacterCard)`
 			flex: 0 0 150px;
 			height: 150px;
 		}
-		
-		/* &__img {
-			flex: 0 0 150px;
-			height: 150px;
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-		} */
 
 		&__info {
 			flex: 1 1 auto;
@@ -143,10 +133,6 @@ export default styled(CharacterCard)`
 
 		li:not(:last-child) {
 			margin-bottom: 10px;
-		}
-
-		a {
-			text-decoration: none;
 		}
 	}
 `;
